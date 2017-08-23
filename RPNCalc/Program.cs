@@ -133,6 +133,17 @@ namespace RPNCalc {
 
 								break;
 							}
+						case "pop":
+						case "x": {
+								if (stack.Count < 1) {
+									Console.WriteLine("Cannot pop from an empty stack.");
+									break;
+								}
+
+								stack.Pop();
+
+								break;
+							}
 						case "clear":
 						case "c": {
 								stack.Clear();
@@ -242,6 +253,7 @@ namespace RPNCalc {
 								Console.WriteLine("swp, s - swap the top two elements on the stack");
 								Console.WriteLine("dup, d - duplicate the top number on the stack");
 								Console.WriteLine("print, p - show the current stack contents");
+								Console.WriteLine("pop, x - pop the last element off the stack");
 								Console.WriteLine("clear, c - clear the stack");
 								Console.WriteLine();
 								Console.WriteLine("ARITHMETIC AND FUNCTIONS");
