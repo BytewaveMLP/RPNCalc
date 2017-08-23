@@ -30,7 +30,7 @@ namespace RPNCalc {
 		/// <param name="numOperands">The number of elements to pop off</param>
 		/// <returns>An array containing the popped elements</returns>
 		static double[] GetOperands(Stack<double> stack, int numOperands) {
-			if (stack.Count() < numOperands) {
+			if (stack.Count < numOperands) {
 				Console.Error.WriteLine("Missing operand(s).");
 				return null;
 			}
@@ -68,7 +68,7 @@ namespace RPNCalc {
 			while (cont) {
 				string input = Prompt();
 
-				int counter = stack.Count() - 1;
+				int counter = stack.Count - 1;
 
 				double[] nums = null;
 
@@ -82,7 +82,7 @@ namespace RPNCalc {
 					switch (input) {
 						case "rot":
 						case "r": {
-								if (stack.Count() < 2) {
+								if (stack.Count < 2) {
 									Console.Error.WriteLine("Not enough elements to rotate stack.");
 									break;
 								}
@@ -101,7 +101,7 @@ namespace RPNCalc {
 							}
 						case "swp":
 						case "x": {
-								if (stack.Count() < 2) {
+								if (stack.Count < 2) {
 									Console.Error.WriteLine("Cannot swap items without 2 items to swap.");
 									break;
 								}
@@ -115,7 +115,7 @@ namespace RPNCalc {
 							}
 						case "dup":
 						case "d": {
-								if (stack.Count() < 1) {
+								if (stack.Count < 1) {
 									Console.Error.WriteLine("Cannot duplicate items from an empty stack.");
 									break;
 								}
