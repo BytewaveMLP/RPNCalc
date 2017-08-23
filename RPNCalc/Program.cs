@@ -100,7 +100,7 @@ namespace RPNCalc {
 								break;
 							}
 						case "swp":
-						case "x": {
+						case "s": {
 								if (stack.Count < 2) {
 									Console.Error.WriteLine("Cannot swap items without 2 items to swap.");
 									break;
@@ -239,7 +239,7 @@ namespace RPNCalc {
 								Console.WriteLine("STACK OPERATIONS");
 								Console.WriteLine("[number] - push a number onto the stack");
 								Console.WriteLine("rot, r - rotate the stack (pop top off, move to bottom)");
-								Console.WriteLine("swp, x - swap the top two elements on the stack");
+								Console.WriteLine("swp, s - swap the top two elements on the stack");
 								Console.WriteLine("dup, d - duplicate the top number on the stack");
 								Console.WriteLine("print, p - show the current stack contents");
 								Console.WriteLine("clear, c - clear the stack");
