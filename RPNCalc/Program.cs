@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace RPNCalc {
 	class Program {
@@ -57,9 +58,11 @@ namespace RPNCalc {
 		static void Main(string[] args) {
 			Stack<double> stack = new Stack<double>();
 
+			AssemblyName asm = typeof(Program).Assembly.GetName();
+
 			bool cont = true;
 
-			Console.WriteLine("RPNCalc 1.0, by Bytewave");
+			Console.WriteLine($"{asm.Name} {asm.Version}, by Bytewave");
 			Console.WriteLine();
 			Console.WriteLine("h/help for help");
 			Console.WriteLine("e/exit to exit");
