@@ -21,9 +21,10 @@ For your convenience, the commands list is provided below:
 STACK OPERATIONS
 [number] - push a number onto the stack
 rot, r - rotate the stack (pop top off, move to bottom)
-swp, x - swap the top two elements on the stack
+swp, s - swap the top two elements on the stack
 dup, d - duplicate the top number on the stack
 print, p - show the current stack contents
+pop, x - pop the last element off the stack
 clear, c - clear the stack
 
 ARITHMETIC AND FUNCTIONS
