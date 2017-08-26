@@ -213,6 +213,36 @@ namespace RPNCalc {
 				return stack;
 			});
 
+			commands.RegisterCommand("log10", "log", (stack) => {
+				double[] nums = GetOperands(stack, 1);
+
+				if (nums == null)
+					return stack;
+
+				stack.Push(Math.Log10(nums[0]));
+
+				return stack;
+			});
+
+			commands.RegisterCommand("loge", "ln", (stack) => {
+				double[] nums = GetOperands(stack, 1);
+
+				if (nums == null)
+					return stack;
+
+				stack.Push(Math.Log(nums[0]));
+
+				return stack;
+			});
+
+			commands.RegisterCommand("logbase", "lb", (stack) => {
+				double[] nums = GetOperands(stack, 2);
+
+				stack.Push(Math.Log(nums[1], nums[0]));
+
+				return stack;
+			});
+
 			commands.RegisterCommand("help", "h", (stack) => {
 				Console.WriteLine("STACK OPERATIONS");
 				Console.WriteLine("[number] - push a number onto the stack");
@@ -230,6 +260,9 @@ namespace RPNCalc {
 				Console.WriteLine("sub, - - subtract the top two numbers (1 - 0)");
 				Console.WriteLine("pow, ^ - raise the second top number to the top number (1 ^ 0)");
 				Console.WriteLine("sin, cos, tan - trig functions");
+				Console.WriteLine("log10, log - take the log base 10 of the top number");
+				Console.WriteLine("loge, ln - take the natural log of the top number");
+				Console.WriteLine("logbase, lb - take the log base (1) of (0)");
 				Console.WriteLine();
 				Console.WriteLine("CALCULATOR COMMANDS");
 				Console.WriteLine("cls, z - clear the screen");
