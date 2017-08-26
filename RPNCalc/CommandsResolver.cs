@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 
 namespace RPNCalc {
+	/// <summary>
+	/// Helper class for storing and resolving commands without complicating the program logic too much.
+	/// </summary>
 	class CommandsResolver {
 		private Dictionary<string, Func<Stack<double>, Stack<double>>> commands;
 

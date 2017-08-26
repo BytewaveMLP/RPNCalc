@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace RPNCalc {
+	/// <summary>
+	/// Helper class which registers all commands and constants used in RPNCalc.
+	/// </summary>
 	class CalculatorCommands {
 		/// <summary>
 		/// Helper function to pop off 2 values from the stack.
