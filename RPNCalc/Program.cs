@@ -11,7 +11,8 @@ namespace RPNCalc {
 		/// <returns>The string the user entered - "" if null</returns>
 		static string Prompt(string prompt) {
 			Console.Write(prompt);
-			return Console.ReadLine() ?? "";
+			string input = Console.ReadLine() ?? "";
+			return input.Trim();
 		}
 
 		/// <summary>
@@ -26,7 +27,8 @@ namespace RPNCalc {
 		static void Main(string[] args) {
 			CommandsResolver commands = new CommandsResolver();
 
-			Commands.Register(commands);
+			CalculatorCommands.Register(commands);
+			CalculatorCommands.RegisterConstants(commands);
 
 			Stack<double> stack = new Stack<double>();
 
@@ -37,14 +39,13 @@ namespace RPNCalc {
 			Console.WriteLine($"{asm.Name} {asm.Version}, by Bytewave");
 			Console.WriteLine();
 			Console.WriteLine("h/help for help");
-			Console.WriteLine("e/exit to exit");
 			Console.WriteLine();
 
 			while (cont) {
 				string input = Prompt();
 
 				if (Double.TryParse(input, out double inputNumber)) {
-					if (Double.IsNaN(inputNumber) || Double.IsPositiveInfinity(inputNumber) || Double.IsNegativeInfinity(inputNumber)) {
+					if (Double.IsNaN(inputNumber)) {
 						Console.Error.WriteLine("Invalid number.");
 					} else {
 						stack.Push(inputNumber);
@@ -53,7 +54,7 @@ namespace RPNCalc {
 					Func<Stack<double>, Stack<double>> resolvedCommand = commands.ResolveCommand(input);
 
 					if (resolvedCommand == null) {
-						Console.Error.WriteLine("Command not found / invalid number.");
+						Console.Error.WriteLine($"{input} is not a command, constant, or valid number.");
 					} else {
 						stack = resolvedCommand(stack);
 

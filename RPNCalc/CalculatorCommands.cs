@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace RPNCalc {
-	class Commands {
+	class CalculatorCommands {
 		/// <summary>
 		/// Helper function to pop off 2 values from the stack.
 		/// </summary>
@@ -87,7 +87,7 @@ namespace RPNCalc {
 				int counter = stack.Count - 1;
 
 				foreach (double num in stack.Reverse()) {
-					Console.WriteLine($"{counter} : {num}");
+					Console.WriteLine($"{counter} : {num:0.##########}");
 					counter--;
 				}
 
@@ -230,14 +230,22 @@ namespace RPNCalc {
 				Console.WriteLine("CALCULATOR COMMANDS");
 				Console.WriteLine("cls, z - clear the screen");
 				Console.WriteLine("help, h - show this help");
-				Console.WriteLine("exit, e - exit the calculator");
+				Console.WriteLine("exit - exit the calculator");
+				Console.WriteLine();
+				Console.WriteLine("CONSTANTS");
+				Console.WriteLine("pi, e");
 
 				return stack;
 			});
 
-			commands.RegisterCommand("exit", "e", (stack) => {
+			commands.RegisterCommand("exit", (stack) => {
 				return null;
 			});
+		}
+
+		public static void RegisterConstants(CommandsResolver commands) {
+			commands.RegisterConstant("pi", Math.PI);
+			commands.RegisterConstant("e", Math.E);
 		}
 	}
 }
