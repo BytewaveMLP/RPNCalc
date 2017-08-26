@@ -35,6 +35,10 @@ namespace RPNCalc {
 			return arr;
 		}
 
+		/// <summary>
+		/// Reigsters the commands for RPNCalc.
+		/// </summary>
+		/// <param name="commands">The current CommandsResolver object.</param>
 		public static void Register(CommandsResolver commands) {
 			commands.RegisterCommand("rot", "r", (stack) => {
 				if (stack.Count < 2) {
@@ -243,6 +247,10 @@ namespace RPNCalc {
 			});
 		}
 
+		/// <summary>
+		/// Registers the constants used in RPNCalc.
+		/// </summary>
+		/// <param name="commands">The current CommandsResolver object.</param>
 		public static void RegisterConstants(CommandsResolver commands) {
 			commands.RegisterConstant("pi", Math.PI);
 			commands.RegisterConstant("e", Math.E);
