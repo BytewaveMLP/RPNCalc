@@ -79,6 +79,11 @@ namespace RPNCalc {
 			});
 
 			commands.RegisterCommand("print", "p", (stack) => {
+				if (stack.Count == 0) {
+					Console.WriteLine("Empty stack.");
+					return stack;
+				}
+
 				int counter = stack.Count - 1;
 
 				foreach (double num in stack.Reverse()) {
@@ -90,7 +95,7 @@ namespace RPNCalc {
 			});
 
 			commands.RegisterCommand("pop", "x", (stack) => {
-				if (stack.Count < 1) {
+				if (stack.Count == 0) {
 					Console.Error.WriteLine("Cannot pop from an empty stack.");
 					return stack;
 				}
