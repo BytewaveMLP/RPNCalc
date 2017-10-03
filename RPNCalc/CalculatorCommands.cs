@@ -240,6 +240,9 @@ namespace RPNCalc {
 
 			commands.RegisterCommand("logbase", "lb", (stack) => {
 				double[] nums = GetOperands(stack, 2);
+				
+				if (nums == null)
+					return stack;
 
 				stack.Push(Math.Log(nums[1], nums[0]));
 
